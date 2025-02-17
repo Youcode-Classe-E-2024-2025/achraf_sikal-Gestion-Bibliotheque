@@ -1,3 +1,7 @@
-<x-layout>
-    <h1>about page</h1>
-</x-layout>
+@extends('layouts.app')
+
+@section('title', 'About')
+
+@section('content')
+    <h1>Welcome to the About Page</h1>
+@endsection
