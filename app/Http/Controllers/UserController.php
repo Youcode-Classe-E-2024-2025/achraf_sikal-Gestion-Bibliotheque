@@ -27,6 +27,16 @@ class UserController extends Controller
         return view('user/signup');
     }
     public function login(Request $request){
+        if($request->method()=="POST"){
+            $incomingFildes = $request->validate([
+                'email'=> ['required'],
+                'password'=> ['required'],
+            ]);
+            if(auth()->attempt($incomingFildes)){
+                $request->session()->regenerate();
+                return redirect('/');
+            }
+        }
         return view('user/login');
     }
     public function profile(){

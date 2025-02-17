@@ -17,3 +17,4 @@ Route::get('/signup', [UserController::class,'signup']);
 Route::get('/login', [UserController::class,'login']);
 Route::post('/signup', [UserController::class,'signup']);
 Route::post('/logout', [UserController::class,'logout']);
+Route::post('/login', [UserController::class,'login']);
