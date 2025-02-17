@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Welcome to Elegant Library')
+@section('title', 'Home')
 
 @section('content')
     <!-- Hero Section -->

@@ -13,10 +13,13 @@
             <!-- Authentication Links -->
             @auth
                 <x-nav-link href="/profile" label="Profile"/>
-                <x-nav-link href="/logout" label="Logout"/>
+                <form action="/logout" method="POST">
+                    @csrf
+                    <button>Logout</button>
+                </form>
             @else
                 <x-nav-link href="/login" label="Login"/>
-                <x-nav-link href="/register" label="Register"/>
+                <x-nav-link href="/signup" label="Signup"/>
             @endauth
         </div>
     </div>
