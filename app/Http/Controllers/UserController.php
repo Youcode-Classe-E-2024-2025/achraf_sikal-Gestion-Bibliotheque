@@ -39,7 +39,7 @@ class UserController extends Controller
         }
         return view('user/login');
     }
-    public function profile(){
+    public function profile(Request $request){
         return view('user/profile');
     }
 }
