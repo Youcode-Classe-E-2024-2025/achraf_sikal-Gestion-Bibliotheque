@@ -3,7 +3,7 @@
 @section('title', 'Sign Up for Elegant Library')
 
 @section('content')
-<div class="min-h-screen flex items-center justify-center bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
+<div class="min-h-screen flex items-center justify-center bg-gray-100 px-4 sm:px-6 lg:px-8">
     <div class="max-w-md w-full space-y-8">
         <div>
             <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
@@ -16,10 +16,36 @@
                 </a>
             </p>
         </div>
-        <form class="mt-8 space-y-6" action="/signup" method="POST">
+        <form class="mt-8 space-y-6" action="/signup" method="POST" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="remember" value="true">
             <div class="rounded-md shadow-sm -space-y-px">
+            <div class="flex flex-col items-center space-y-4">
+    <!-- Image Preview -->
+    <label for="avatar" class="cursor-pointer w-32 h-32 border-2 border-gray-300 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center">
+        <img id="avatarPreview" class="hidden w-full h-full object-cover" />
+        <span id="avatarPlaceholder" class="text-gray-500">No Image</span>
+    </label>
+
+    <!-- File Input (Hidden) -->
+    <input id="avatar" name="avatar" type="file" accept="image/*" class="hidden" onchange="previewAvatar(event)">
+</div>
+
+<script>
+    function previewAvatar(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('avatarPreview').src = e.target.result;
+                document.getElementById('avatarPreview').classList.remove('hidden');
+                document.getElementById('avatarPlaceholder').classList.add('hidden');
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+</script>
+
                 <div>
                     <label for="name" class="sr-only">Full name</label>
                     <input id="name" name="name" type="text" autocomplete="name" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Full name">
