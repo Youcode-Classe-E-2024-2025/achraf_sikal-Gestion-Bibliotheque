@@ -45,6 +45,7 @@ class UserController extends Controller
         return view('user/login');
     }
     public function profile(Request $request){
-        return view('user/profile');
+        $user = auth()->user();
+        return view('user/profile',compact('user'));
     }
 }
