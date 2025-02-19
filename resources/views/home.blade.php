@@ -11,7 +11,6 @@
             <a href="" class="bg-white text-gray-900 py-2 px-6 rounded-full text-lg font-semibold hover:bg-gray-200 transition duration-300">Explore Books</a>
         </div>
     </header>
-    <img src="{{ asset($user->avatar) }}" alt="User Avatar">
 
 
     <!-- Featured Books Section -->

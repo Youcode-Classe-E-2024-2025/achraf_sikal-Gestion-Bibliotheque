@@ -2,10 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+$user = auth()->user();
+session()->put("user", $user);
 
 Route::get('/', function () {
-    $user = auth()->user();
-    return view('home',compact('user'));
+    return view('home');
 });
 Route::get('/about', function () {
     return view('about');
