@@ -43,7 +43,7 @@ class BookController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'required',
             'cover' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'pdf' => 'required|mimes:pdf|max:10000',
+            'pdf' => 'required|mimes:pdf|max:50000',
         ]);
 
         // Handle File Uploads
@@ -84,7 +84,7 @@ class BookController extends Controller
             'writer_id' => 'required|exists:users,id',
             'borrower_id' => 'nullable|exists:users,id',
             'cover' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'pdf' => 'nullable|mimes:pdf|max:10000',
+            'pdf' => 'nullable|mimes:pdf|max:50000',
         ]);
 
         // Handle file updates
