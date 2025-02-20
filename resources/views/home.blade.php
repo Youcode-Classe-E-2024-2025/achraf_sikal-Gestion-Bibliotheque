@@ -8,7 +8,7 @@
         <div class="container mx-auto px-6 text-center">
             <h1 class="text-5xl font-bold mb-4">Welcome to Our Elegant Library</h1>
             <p class="text-xl mb-8">Discover a world of knowledge at your fingertips</p>
-            <a href="" class="bg-white text-gray-900 py-2 px-6 rounded-full text-lg font-semibold hover:bg-gray-200 transition duration-300">Explore Books</a>
+            <a href="/explore" class="bg-white text-gray-900 py-2 px-6 rounded-full text-lg font-semibold hover:bg-gray-200 transition duration-300">Explore Books</a>
         </div>
     </header>
 

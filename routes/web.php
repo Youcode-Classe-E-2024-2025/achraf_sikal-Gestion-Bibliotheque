@@ -15,6 +15,7 @@ Route::post('/books/{book}/borrow', [BookController::class, 'borrow'])->name('bo
 
 Route::get('/', [HomeController::class,'index']);
 Route::get('/books', [BookController::class,'index']);
+Route::get('/explore', [BookController::class,'explore']);
 Route::resource('books', BookController::class);
 Route::get('/about', function () {
     return view('about');
