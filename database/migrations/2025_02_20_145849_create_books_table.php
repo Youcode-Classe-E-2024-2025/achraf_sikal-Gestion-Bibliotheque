@@ -16,8 +16,10 @@ return new class extends Migration
             $table->timestamps();
             $table->string("title");
             $table->longText("description");
-            $table->foreignId("borrower_id");
-            $table->longText("link");
+            $table->foreignId("borrower_id")->references('id')->on('users')->nullable();
+            $table->foreignId("writer_id")->references('id')->on('users');
+            $table->longText("cover");
+            $table->longText("pdf");
         });
     }
 

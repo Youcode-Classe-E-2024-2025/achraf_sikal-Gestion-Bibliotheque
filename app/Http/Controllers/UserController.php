@@ -19,7 +19,6 @@ class UserController extends Controller
                 'email'=> ['required','email',Rule::unique('users','email')],
                 'password'=> ['required','min:8','max:200'],
                 'avatar'=> ['required'],
-
             ]);
             if ($request->hasFile('avatar')) {
                 $incomingFields['avatar'] = $request->file('avatar')->store('avatars', 'public');

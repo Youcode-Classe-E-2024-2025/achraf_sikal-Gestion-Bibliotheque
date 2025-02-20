@@ -1,13 +1,22 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+
 $user = auth()->user();
 session()->put("user", $user);
 
-Route::get('/', function () {
-    return view('home');
-});
+
+Route::resource('books', BookController::class);
+
+// Add this route for borrowing a book
+Route::post('/books/{book}/borrow', [BookController::class, 'borrow'])->name('books.borrow');
+
+Route::get('/', [HomeController::class,'index']);
+Route::get('/books', [BookController::class,'index']);
+Route::resource('books', BookController::class);
 Route::get('/about', function () {
     return view('about');
 });

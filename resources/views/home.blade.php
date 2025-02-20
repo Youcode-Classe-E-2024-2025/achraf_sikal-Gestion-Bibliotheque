@@ -45,9 +45,9 @@
 <script>
     // Sample book data
     const books = [
-        { title: "The Great Gatsby", author: "F. Scott Fitzgerald", cover: "https://placeholder.com/150x200" },
-        { title: "To Kill a Mockingbird", author: "Harper Lee", cover: "https://placeholder.com/150x200" },
-        { title: "1984", author: "George Orwell", cover: "https://placeholder.com/150x200" },
+        @foreach ($featured as $book)
+        { title: "{{ $book->title }}", author: "F. Scott Fitzgerald", cover: "{{ asset("/storage/".$book->cover) }}" },
+        @endforeach
     ];
 
     // Function to create book cards
