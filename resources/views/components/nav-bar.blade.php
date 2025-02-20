@@ -26,6 +26,9 @@
                 <a href="/profile" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-t-lg">
                     Profile
                 </a>
+                <a href="/books" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-t-lg">
+                    My books
+                </a>
                 <form action="/logout" method="POST">
                     @csrf
                     <button type="submit" class="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-b-lg">
