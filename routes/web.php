@@ -9,9 +9,8 @@ $user = auth()->user();
 session()->put("user", $user);
 
 
-Route::resource('books', BookController::class);
+Route::resource('books', HomeController::class);
 
-// Add this route for borrowing a book
 Route::post('/books/{book}/borrow', [BookController::class, 'borrow'])->name('books.borrow');
 
 Route::get('/', [HomeController::class,'index']);

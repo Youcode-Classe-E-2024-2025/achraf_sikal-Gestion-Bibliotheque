@@ -1,23 +1,22 @@
 @extends('layouts.app')
 
-@section('title', 'Home')
+@section('title', 'Explore All Books')
 
 @section('content')
     <!-- Hero Section -->
     <header class="bg-gray-900 text-white py-20">
         <div class="container mx-auto px-6 text-center">
-            <h1 class="text-5xl font-bold mb-4">Welcome to Our Elegant Library</h1>
-            <p class="text-xl mb-8">Discover a world of knowledge at your fingertips</p>
-            <a href="" class="bg-white text-gray-900 py-2 px-6 rounded-full text-lg font-semibold hover:bg-gray-200 transition duration-300">Explore Books</a>
+            <h1 class="text-5xl font-bold mb-4">Explore All Books</h1>
+            <p class="text-xl mb-8">Discover thousands of books across different genres and authors.</p>
+            <a href="#explore-books" class="bg-white text-gray-900 py-2 px-6 rounded-full text-lg font-semibold hover:bg-gray-200 transition duration-300">Start Exploring</a>
         </div>
     </header>
 
-
-    <!-- Featured Books Section -->
-    <section class="py-16">
+    <!-- All Books Section -->
+    <section class="py-16" id="explore-books">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-8">Featured Books</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="featured-books">
+            <h2 class="text-3xl font-bold text-center mb-8">All Books</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="books-container">
                 <!-- Books will be dynamically added here -->
             </div>
         </div>
@@ -43,10 +42,10 @@
 
 @push('scripts')
 <script>
-    // Sample book data
+    // Fetch all books (instead of featured)
     const books = [
-        @foreach ($featured as $book)
-        { id: "{{ $book->id }}",title: "{{ $book->title }}", author: "F. Scott Fitzgerald", cover: "{{ asset("/storage/".$book->cover) }}" },
+        @foreach ($books as $book)
+        { id: "{{ $book->id }}", title: "{{ $book->title }}", author: "{{ $book->author }}", cover: "{{ asset('storage/'.$book->cover) }}" },
         @endforeach
     ];
 
@@ -65,10 +64,10 @@
         `;
     }
 
-    // Populate featured books
-    const featuredBooksContainer = document.getElementById('featured-books');
+    // Populate all books
+    const booksContainer = document.getElementById('books-container');
     books.forEach(book => {
-        featuredBooksContainer.innerHTML += createBookCard(book);
+        booksContainer.innerHTML += createBookCard(book);
     });
 
     // Search functionality
@@ -89,9 +88,9 @@
             book.author.toLowerCase().includes(searchTerm)
         );
 
-        featuredBooksContainer.innerHTML = '';
+        booksContainer.innerHTML = '';
         filteredBooks.forEach(book => {
-            featuredBooksContainer.innerHTML += createBookCard(book);
+            booksContainer.innerHTML += createBookCard(book);
         });
     }
 </script>

@@ -22,12 +22,6 @@
             <label class="block mb-2">Description:</label>
             <textarea name="description" class="w-full p-2 border rounded mb-4" required></textarea>
 
-            <label class="block mb-2">Writer ID:</label>
-            <input type="number" name="writer_id" class="w-full p-2 border rounded mb-4" required>
-
-            <label class="block mb-2">Borrower ID (optional):</label>
-            <input type="number" name="borrower_id" class="w-full p-2 border rounded mb-4">
-
             <label class="block mb-2">Cover Image:</label>
             <input type="file" name="cover" class="w-full p-2 border rounded mb-4" required>
 

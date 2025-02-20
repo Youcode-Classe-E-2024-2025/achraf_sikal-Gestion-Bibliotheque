@@ -18,7 +18,7 @@
                     <h1 class="text-4xl font-bold mb-2">{{ $book->title }}</h1>
                     <div class="flex flex-wrap gap-4 justify-center md:justify-start items-center mb-6">
                         <span class="px-3 py-1 bg-blue-500 bg-opacity-20 rounded-full text-sm">
-                            Writer ID: {{ $book->writer_id }}
+                            Writer : {{ $writer }}
                         </span>
                         <span class="px-3 py-1 bg-blue-500 bg-opacity-20 rounded-full text-sm">
                             Status: {{ $book->borrower_id ? 'Borrowed' : 'Available' }}

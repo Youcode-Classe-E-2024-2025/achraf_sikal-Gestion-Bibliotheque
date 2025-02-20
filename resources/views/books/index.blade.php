@@ -23,15 +23,14 @@
                 {{ session('success') }}
             </div>
         @endif
-
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach ($books as $book)
                 <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col">
                     <!-- Book Cover -->
-                    <div class="h-40 w-full bg-gray-200 rounded-lg mb-4 flex items-center justify-center">
-                        <img src="{{ asset('/storage/'.$book->cover) }}" alt="{{ $book->title }}" class="h-full w-full object-cover rounded-lg">
-                    </div>
-                    
+                        <div class="h-40 w-full bg-gray-200 rounded-lg mb-4 flex items-center justify-center">
+                            <img src="{{ asset('/storage/'.$book->cover) }}" alt="{{ $book->title }}" class="h-full w-full object-cover rounded-lg">
+                        </div>
+
                     <h2 class="text-xl font-semibold text-gray-800 mb-2">{{ $book->title }}</h2>
                     <p class="text-gray-600 text-sm mb-4">{{ Str::limit($book->description, 100) }}</p>
 

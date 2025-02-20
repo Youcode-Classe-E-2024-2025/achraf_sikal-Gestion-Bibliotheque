@@ -5,13 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {
     // Display a list of books
     public function index()
     {
-        $books = Book::all();
+        if (!Auth::check()) {
+            return redirect('/');
+        }
+        $books = Book::where('writer_id', auth()->user()->id)->get();
         return view('books.index', compact('books'));
     }
     public function borrow(Book $book)
@@ -33,8 +37,6 @@ class BookController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required',
-            'writer_id' => 'required|exists:users,id',
-            'borrower_id' => 'nullable|exists:users,id',
             'cover' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'pdf' => 'required|mimes:pdf|max:10000',
         ]);
@@ -47,8 +49,7 @@ class BookController extends Controller
         Book::create([
             'title' => $request->title,
             'description' => $request->description,
-            'writer_id' => $request->writer_id,
-            'borrower_id' => $request->borrower_id,
+            'writer_id' => auth()->user()->id,
             'cover' => $coverPath,
             'pdf' => $pdfPath,
         ]);
