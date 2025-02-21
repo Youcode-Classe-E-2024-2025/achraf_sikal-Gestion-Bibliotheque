@@ -20,7 +20,7 @@ class BookController extends Controller
     }
     public function explore()
     {
-        $books = Book::paginate(9); // Paginate for better performance
+        $books = Book::paginate(8); // Paginate for better performance
         return view('books.explore', compact('books'));
     }
     public function borrow(Book $book)
