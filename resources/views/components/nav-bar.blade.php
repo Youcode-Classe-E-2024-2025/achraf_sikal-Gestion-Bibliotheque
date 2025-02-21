@@ -6,9 +6,6 @@
 
         <div class="flex space-x-4">
             <!-- Navigation Links -->
-            <x-nav-link href="/" label="Home"/>
-            <x-nav-link href="/contact" label="Contact"/>
-            <x-nav-link href="/about" label="About"/>
 
             <!-- Authentication Links -->
             @auth
@@ -28,6 +25,9 @@
                 </a>
                 <a href="/books" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-t-lg">
                     My books
+                </a>
+                <a href="/borrowed" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-t-lg">
+                    Borrowed books
                 </a>
                 <form action="/logout" method="POST">
                     @csrf

@@ -18,6 +18,14 @@ class BookController extends Controller
         $books = Book::where('writer_id', auth()->user()->id)->get();
         return view('books.index', compact('books'));
     }
+    public function userBorrows()
+    {
+        if (!Auth::check()) {
+            return redirect('/');
+        }
+        $books = Book::where('borrower_id', auth()->user()->id)->paginate(8);
+        return view('books.Borrowed', compact('books'));
+    }
     public function explore()
     {
         $books = Book::paginate(8); // Paginate for better performance
@@ -25,7 +33,11 @@ class BookController extends Controller
     }
     public function borrow(Book $book)
     {
-        $book->update(['status' => 'Borrowed', 'borrowed_at' => now(), 'borrower_id' => auth()->id()]);
+        if (Auth::check()) {
+            $book->update(['status' => 'Borrowed', 'borrowed_at' => now(), 'borrower_id' => auth()->id()]);
+        }else {
+            return redirect('/login');
+        }
         return redirect()->back()->with('success', 'Book borrowed successfully!');
     }
 
